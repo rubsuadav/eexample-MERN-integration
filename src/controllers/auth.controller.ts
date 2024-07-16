@@ -34,7 +34,8 @@ export const signup = async (req: Request, res: Response) => {
   if (handleValidatePassword(password, res)) return;
   try {
     if (rol === "admin") {
-      const session = await createCheckoutSession(email);
+      registerUser(req, res);
+      // const session = await createCheckoutSession(email);
       // const subscrition = await getCustomerSubscriptionByEmail(email);
       // if (subscrition) {
       //   const newUser = new User(req.body);
@@ -42,7 +43,7 @@ export const signup = async (req: Request, res: Response) => {
       //   await newUser.save();
       //   return res.status(201).json({ message: `${newUser}` });
       // }
-      return res.status(201).json({ url: session.url });
+      // return res.status(201).json({ url: session.url });
     } else {
       await registerUser(req, res);
     }
